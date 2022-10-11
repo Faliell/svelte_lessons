@@ -1,10 +1,25 @@
 <script>
 	export let name;
+	let color = "black";
+
+	const handleClick = () => {
+		color = "white"
+	}
+
+	const handleInput = (e) => {
+		color = e.target.value;
+	}
+
 </script>
 
 <main>
 	<h1>Hello {name}!</h1>
-	<p>Hello, Ninjas!</p>
+	<p style="color: {color}">{color}</p>
+	<button on:click={handleClick}>update color</button>
+	<input type="text" on:input={handleInput} value={color}>
+	<!-- <input type="text" bind:value={color}> -->
+
+
 </main>
 
 <style>
