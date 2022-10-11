@@ -1,6 +1,9 @@
 <script>
-	export let name;
+	let firstName = "Jimi";
+	let lastName = "Hendrix";
 	let color = "black";
+
+	$: fullName = `${firstName} ${lastName}`;
 
 	const handleClick = () => {
 		color = "white"
@@ -13,12 +16,10 @@
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p style="color: {color}">{color}</p>
-	<button on:click={handleClick}>update color</button>
-	<input type="text" on:input={handleInput} value={color}>
-	<!-- <input type="text" bind:value={color}> -->
-
+<p>{fullName} - {color} belt</p>
+<input type="text" bind:value={firstName}>
+<input type="text" bind:value={lastName}>
+<input type="text" bind:value={color}>
 
 </main>
 
