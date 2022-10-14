@@ -1,6 +1,7 @@
 <script>
 
 	import Modal from "./Modal.svelte";
+	import AddPersonForm from './AddPersonForm.svelte';
 
 	let showModal = false;
 
@@ -12,23 +13,23 @@
     { name: 'yoshi', beltColour: 'black', age: 25, id: 1 },
     { name: 'mario', beltColour: 'orange', age: 45, id: 2 },
     { name: 'luigi', beltColour: 'brown', age: 35, id: 3 }
-  ];
+  	];
 
 	const handleClick = (id) => {
 		people = people.filter((person) => person.id != id);
 	}
 
-
+	const addPerson = (e) => {
+		const person = e.detail;
+		people = [person, ...people];
+		showModal = false;
+	}
 
 </script>
 
 <Modal  isPromo= {true} {showModal} on:click={toggleModal}>
 	<h3>Add a New Person</h3>
-	<form action="">
-		<input type="text" placeholder="name">
-		<input type="text" placeholder="belt colour">
-		<button>Add Person</button>
-	</form>
+	<AddPersonForm on:addPerson={addPerson}/>
 
 </Modal>
 <main>
